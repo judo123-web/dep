@@ -1,0 +1,94 @@
+<div class="weather-app" [style]="BackGroundImageChanger()">
+    <div class="container">
+        <h3 class="brand">ამინდი</h3>
+        <div>
+            <h1 class="temp">{{KelvinToCelsius() | number: '1.0-0'}}&#176;</h1>
+
+            <div class="city-time">
+                <h1 class="name">{{WeatherInfo?.name}}</h1>
+                <small>
+                    <!-- <span class="time">{{getCurrentTime()}}</span> -->
+                    <span class="date"> {{getCurrentDate()  | date: 'EEEE, MMMM d, y'}}</span>
+                </small>
+            </div>
+            <div class="weather">
+                <img [src]="IconChanger()" alt="icon" class="icon" width="50" height="50">
+                <span class="condition">{{WeatherInfo?.weather[0]?.main}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div id="locationInput">
+            <input #search (keyup)="onEnterClick(search, $event)" type="text" class="search" placeholder="მოძებნე ლოკაცია...">
+            <button (click)="onSearchClick(search)" type="submit" class="submit"><i class="fas fa-search"></i></button>
+        </div>
+
+        <ul class="cities">
+            <li #list class="city" *ngFor="let city of CityGroup" (click)="onCityClick(list)">{{city}}</li>
+        </ul>
+        <ul class="d-flex justify-content-between">
+            <button class="btn btn-outline-light" (click)="openForecastHourly()">ამინდი საათების მიხედვით</button>
+            <button class="btn btn-outline-light" (click)="openForecastDaily()">8 დრის პროგნოზი</button>
+        </ul>
+        <ul class="details">
+            <h4>ამინდის დეტალები</h4>
+            <li>
+                <span>ტემპერატურა</span>
+                <span class="cloud">{{KelvinToCelsius() | number: '1.0-0'}}&#176;C</span>
+            </li>
+            <li>
+                <span>ტემპერატურის შეგრძნება</span>
+                <span class="cloud">{{(WeatherInfo?.main?.feels_like - 273.15) |number: '1.0-0'}}&#176;C</span>
+            </li>
+            <li>
+                <span> მაქსიმალური ტემპერატურა</span>
+                <span class="cloud">{{(WeatherInfo?.main?.temp_max - 273.15) |number: '1.0-0'}}&#176;C</span>
+            </li>
+            <li>
+                <span> მინიმალური ტემპერატურა</span>
+                <span class="cloud">{{(WeatherInfo?.main?.temp_min - 273.15) |number: '1.0-0'}}&#176;C</span>
+            </li>
+            <li>
+                <span>წნევა</span>
+                <span class="cloud">{{WeatherInfo?.main?.pressure | number: '1.0-3'}} კპა</span>
+            </li>
+            <li>
+                <span>ტენიანობა</span>
+                <span class="cloud">{{WeatherInfo?.main?.humidity}} %</span>
+            </li>
+            <li>
+                <span>გრძედი</span>
+                <span class="cloud">{{WeatherInfo?.coord?.lat}}&#176;</span>
+            </li>
+            <li>
+                <span>განედი</span>
+                <span class="cloud">{{WeatherInfo?.coord?.lon}}&#176;</span>
+            </li>
+            <li>
+                <span>ქარის მიმართულება</span>
+                <span class="cloud">{{WeatherInfo?.wind?.deg}} %</span>
+            </li>
+            <li>
+                <span>ქარის სისწრაფე</span>
+                <span class="cloud">{{WeatherInfo?.wind?.speed}} მ/წმ</span>
+            </li>
+            <li>
+                <span>ხილვადობა</span>
+                <span class="cloud">{{WeatherInfo?.visibility}} კმ</span>
+            </li>
+            <li>
+                <span>დროის სარტყელი</span>
+                <span class="cloud">{{WeatherInfo?.timezone}}</span>
+            </li>
+            <li>
+                <span>ქვეყნის კოდი</span>
+                <span class="cloud">{{WeatherInfo?.sys?.country}}</span>
+            </li>
+
+        </ul>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-outline-light" [routerLink]="'/Maps'">რუკა</button>
+            <button class="btn btn-outline-light" routerLink="/Currency">სავალუტო ბირჟა</button>
+        </div>
+    </div>
+</div>

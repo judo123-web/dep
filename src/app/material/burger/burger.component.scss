@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.burger-section {
+    header {
+        text-align: center;
+        img {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+    }
+    .table {
+        .left {
+            .weather {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                cursor: pointer;
+                .div1 {
+                    background-image: url('../../../assets/images/Sun.PNG');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 15px;
+                    height: 15px;
+                }
+                p {
+                    font-size: 12px;
+                    margin-top: 15px;
+                }
+            }
+            .currency {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                cursor: pointer;
+                .div2 {
+                    background-image: url('../../../assets/images/exchange.PNG');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 15px;
+                    height: 15px;
+                }
+                .div2-1 {
+                    background-image: url('../../../assets/images/MoneyBag.png');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 15px;
+                    height: 15px;
+                }
+                p {
+                    font-size: 12px;
+                    margin-top: 15px;
+                }
+            }
+            .map {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                cursor: pointer;
+                .div3 {
+                    background-image: url('../../../assets/images/map.PNG');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 15px;
+                    height: 15px;
+                }
+                p {
+                    margin-top: 15px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
